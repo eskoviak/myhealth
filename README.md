@@ -1,2 +1,2 @@
 # myhealth
-MyHealth application
+MyHealth application -- for the service oriented version of the My Health Application
