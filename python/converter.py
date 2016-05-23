@@ -7,21 +7,27 @@
 
 import sys
 import string
-import os.path
+import os
 
-filelist = open("FILELIST", "r")
-
-for file in filelist:
-    file = string.rstrip(file, "\n")
-    print("Processing "+file+" ...")
-    path = os.path.dirname(file)
-    basename = os.path.basename(file)
-    infile = open(file, "r")
-    outfile = open(path+"/"+string.replace(basename, ".txt", ".csv"), "w")
-    for line in infile:
-	outline = string.replace(line, "~", "\"")
-        outline = string.replace(outline, "^", ",")
-	outfile.write(outline)
-
-infile.close
-outfile.close
+path = "/Users/eskoviak/Google Drive/Buckets/argo/ARS Data/"
+for file in os.listdir(path):
+    #file = os.path.abspath(file)
+    print(file)
+    if os.path.lexists(path+file):
+        #file = string.rstrip(file, "\n")
+        print("Processing "+file+" ...")
+        #path = os.path.dirname(file)
+        #basename = os.path.basename(file)
+        infile = open(path+file, "r")
+        outfile = open(path+string.replace(file, ".txt", ".csv"), "w")
+        for line in infile:
+            outline = string.replace(line, "~", "\"")
+            outline = string.replace(outline, "^", ",")
+            outfile.write(outline)
+        
+        infile.close
+        outfile.close
+    else:
+        print("Can't file input file")
+        sys.exit()
+        
