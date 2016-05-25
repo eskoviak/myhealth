@@ -1,0 +1,4 @@
+﻿CREATE TABLE [dbo].[FD_GROUP]
+(
+	[Id] INT NOT NULL PRIMARY KEY
+)

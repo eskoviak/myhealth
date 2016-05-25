@@ -1,7 +1,8 @@
 #!/usr/bin/python
 
 import MySQLdb
-import os
+import sys
+import string
 
 db=MySQLdb.connect(
     host='104.196.12.164',
@@ -10,9 +11,16 @@ db=MySQLdb.connect(
     db='myHealth')
 
 cur=db.cursor()
+searchPredicate = 'SELECT NDB_No, Long_Desc FROM FOOD_DES WHERE MATCH(Long_Desc) AGAINST ("?")'
 
-#cur.execute('SELECT * FROM Play')
-cur.execute('SELECT * FROM FOOD_DES WHERE MATCH(Long_Desc) AGAINST(os.argv[1])')
+if len(sys.argv) > 1:
+    searchPredicate=string.replace(searchPredicate, "?", sys.argv[1])
+    print searchPredicate
+else:
+    print("No search term specified")
+    sys.exit()
+	
+cur.execute(searchPredicate)
 
 print('NDB_No', 'Long Description')
 for row in cur.fetchall():

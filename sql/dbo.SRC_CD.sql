@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[SRC_CD]
+(
+	[Src_Cd] CHAR(14) NOT NULL PRIMARY KEY, 
+    [SrcCd_Desc] VARCHAR(60) NOT NULL
+)

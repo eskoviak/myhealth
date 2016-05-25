@@ -1,0 +1,8 @@
+﻿Select * from WEIGHT
+WHERE NDB_No > '99000';
+
+INSERT INTO WEIGHT
+VALUES ('99015', '1', 12, 'oz', 365, 0,0);
+
+SELECT * FROM WEIGHT
+WHERE NDB_No > '99000';

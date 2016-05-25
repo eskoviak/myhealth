@@ -1,0 +1,4 @@
+﻿--This script adds the Foreign Keys to the SR28 Database
+--
+ALTER TABLE dbo.FOOD_DES
+ADD CONSTRAINT FK_FOOD_DES_FDGRP_CD_FD_GROUP FOREIGN KEY REFERENCES FD_GROUP (FdGrp_Cd);
