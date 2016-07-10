@@ -1,0 +1,4 @@
+description:  The definitions file for this API
+properties:
+  Client:
+    $ref: ./models/Client.yaml

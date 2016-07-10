@@ -1,0 +1,15 @@
+description:  A client Object
+properties:
+  clientId:
+    description:  The unique idendtifier for a client.
+    type: string
+    format: GUID
+  userName:
+    description:  The user name which is matched to the password and is displayed.
+    type: string
+  firstName:
+    description: The first name of the client.
+    type: string
+  lastName:
+    description: The last name of the client.
+    type string
