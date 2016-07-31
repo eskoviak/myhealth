@@ -13,3 +13,10 @@ properties:
   lastName:
     description: The last name of the client.
     type string
+  password:
+    description: The user password
+    type: string
+  dateOfBirth:
+    description: User's date of birth ISO 8601 format
+    type: string
+    format: date
