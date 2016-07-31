@@ -1,0 +1,19 @@
+description: |
+  Model file for blood pressure
+properties:
+  clientId:
+    description: The client Identfier
+    type: string
+  observationDate:
+    description: ISO 8601
+    type: string
+    format: date
+  systolic:
+    description: The measured systolic pressure
+    type: number
+  diastolic:
+    description: The mesaured diastolic pressure
+    type: number
+  restingHeartRate:
+    description: The measured pulse rate
+    type: number
