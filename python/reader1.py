@@ -20,6 +20,10 @@ def getCal(inTuple, weight, time):
   y0=float(inTuple[0])-slope*125.0
   return (slope*weight+y0)*(time/30)
 
+def loadDictionary(infile):
+  # TODO test for existence of infile
+  
+
 #print(line.split('\t'))
 for line in open('../harvard.csv', 'r'):
   parts = line.split('\t')
