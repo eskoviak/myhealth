@@ -1,15 +1,12 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
-# File to read the first file given on the command line and convert:
-# '^' to tab character and
-# '~' to '"' character
-# writing output to the second file
+# Read a white space delimited .dat file and write a csv file 
 
 import sys
 import string
 import os
 
-path = "/Users/eskoviak/Google Drive/Buckets/argo/ARS Data/"
+path = "/Users/eskoviak/Google Drive/Projects/myhealth/ars_data"
 for file in os.listdir(path):
     #file = os.path.abspath(file)
     print(file)
@@ -19,10 +16,8 @@ for file in os.listdir(path):
         #path = os.path.dirname(file)
         #basename = os.path.basename(file)
         infile = open(path+file, "r")
-        outfile = open(path+string.replace(file, ".txt", ".csv"), "w")
+        outfile = open(path+string.replace(file, ".dat", ".csv"), "w")
         for line in infile:
-            outline = string.replace(line, "~", "\"")
-            outline = string.replace(outline, "^", ",")
             outfile.write(outline)
         
         infile.close
