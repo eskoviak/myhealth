@@ -8,16 +8,24 @@
 
   The string in field one can contain the comma character
 """
+import json
+
 # create empty dictionary
 harvard = {}
 
-# for testing:
-line = 'Hot, steamy yoga\t100\t150\t200'
+def getCal(inTuple, weight, time):
+  rise=inTuple[2]-inTuple[0]
+  run=60
+  slope=float(rise)/float(run)
+  y0=float(inTuple[0])-slope*125.0
+  return (slope*weight+y0)*(time/30)
 
 #print(line.split('\t'))
-parts = line.split('\t')
-slope = (float(parts[3])-float(parts[1]))/60.0
-y0 = float(parts[1]) - (slope * 125.0)
-harvard[parts[0]]=((int(parts[1]),int(parts[2]),int(parts[3])),(slope,y0))
+for line in open('../harvard.csv', 'r'):
+  parts = line.split('\t')
+  #slope = (float(parts[3])-float(parts[1]))/60.0
+  #y0 = float(parts[1]) - (slope * 125.0)
+  harvard[parts[0]]=(int(parts[1]),int(parts[2]),int(parts[3]))
 
-print(harvard)
+print(json.dumps(harvard))
+print( getCal((100,150,200),155,30))
