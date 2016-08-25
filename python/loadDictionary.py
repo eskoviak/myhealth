@@ -22,7 +22,7 @@ def getCal(inTuple, weight, time):
 
 def loadDictionary(infile, dict):
   # TODO test for existence of infile
-  for line in open('../harvard.csv', 'r'):
+  for line in open('harvard.csv', 'r'):
     parts = line.split('\t')
     dict[parts[0]]=(int(parts[1]),int(parts[2]),int(parts[3]))
 
