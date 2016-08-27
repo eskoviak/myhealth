@@ -1,5 +1,7 @@
 description: |
   Model file for blood pressure
+required:
+  ['clientID', 'observationDate', 'systolic', 'diastolic', 'restingHeartRate']
 properties:
   clientId:
     description: The client Identfier

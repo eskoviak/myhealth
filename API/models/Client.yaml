@@ -1,4 +1,7 @@
-description:  A client Object
+description:  |
+  A client Class
+required:
+  ['clientId', 'userName', 'firstName', 'lastName', 'password', 'dateOfBirth']
 properties:
   clientId:
     description:  The unique idendtifier for a client.

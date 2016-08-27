@@ -2,6 +2,8 @@ description: |
   Model file for body weight.  This represents a single row from the data store.  It
   would be used to update the data, and as an element of an array which fetches data
   based on some external filter criteria.
+required:
+  ['clientId', 'observationDate', 'weight']
 propterties:
   clientId:
     description:  The id used to get the client data from the data store.
@@ -16,4 +18,4 @@ propterties:
     type: number
   bodyFat:
     description: The percent of body fat in the observation, in the format 0.####
-    type: number
+    type: ['number', 'null']

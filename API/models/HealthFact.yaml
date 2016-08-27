@@ -1,0 +1,18 @@
+description: |
+  The HealthFact model -- represents a know health fact
+required:
+  []
+properties:
+  type:
+    description: |
+      The type of HealthFact
+    enum: 
+      [ 'Weight', 'Height', 'BodyFat']
+  observationDate:
+    type: string
+    format: date
+  value:
+    type: number
+  unit:
+    enum:
+      ['lbm', 'kg', 'in','cm','%'] 

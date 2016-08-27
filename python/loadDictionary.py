@@ -13,14 +13,6 @@ import json
 # create empty dictionary
 harvard = {}
 
-# TODO Move out of this file
-def getCal(inTuple, weight, time):
-  rise=inTuple[2]-inTuple[0]
-  run=60
-  slope=float(rise)/float(run)
-  y0=float(inTuple[0])-slope*125.0
-  return (slope*weight+y0)*(time/30)
-
 def loadDictionary(infile, dict):
   # TODO test for existence of infile
   for line in open(infile, 'r'):

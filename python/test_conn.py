@@ -15,7 +15,7 @@ searchPredicate = 'SELECT NDB_No, Long_Desc FROM FOOD_DES WHERE MATCH(Long_Desc)
 
 if len(sys.argv) > 1:
     searchPredicate=string.replace(searchPredicate, "?", sys.argv[1])
-    print searchPredicate
+    print(searchPredicate)
 else:
     print("No search term specified")
     sys.exit()
