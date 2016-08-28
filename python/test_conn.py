@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 import MySQLdb
 import sys
@@ -7,7 +7,7 @@ import string
 db=MySQLdb.connect(
     host='104.196.12.164',
     user='root',
-    passwd='MyG1rls&',
+    passwd='Y0uKn0w3',
     db='myHealth')
 
 cur=db.cursor()

@@ -20,3 +20,10 @@ def getActivity(inQuery):
       if inQuery.upper() in key.upper():
           activities.append(key)
   return activities
+
+def getActivityData(activityKey):
+  # load the dictionary
+  fp = open('harvard.json', 'r')
+  harvard = json.load(fp)
+  return harvard[activityKey]
+
