@@ -7,7 +7,7 @@ properties:
     description: |
       The type of HealthFact
     enum: 
-      [ 'Weight', 'Height', 'BodyFat']
+      [ 'Weight', 'Height', 'BodyFat', 'BloodPressure']
   observationDate:
     type: string
     format: date

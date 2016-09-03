@@ -3,7 +3,7 @@
 """
 import json
 
-def getCal(inTuple, weight, time):
+def getCalories(inTuple, weight, time):
   rise=inTuple[2]-inTuple[0]
   run=60
   slope=float(rise)/float(run)

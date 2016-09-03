@@ -1,0 +1,33 @@
+description: |
+  This is the model for a Scalar Value.
+
+  Usage:  If the value to be represented is a unitless value, such as pi, place
+          the value in the required value property, and leave the units property
+          blank:
+
+	  "ScalarValue" { "value" : 3.14159 }
+
+          If the value is expressed with units, the units should be represented
+          in the units field:
+
+	  "ScalarValue" { "value" : 165, "units" : "lbm" }
+
+          Note:  a ratio such as 10% may be represented two ways:
+
+          "Ratio" { "value" : 10, "units" : "%" } 
+
+            or
+  
+          "Ratio" { "value" : 0.10 } for the same thing. 
+required:
+  [value]
+properties:
+  value:
+    description: |
+      The value of this scalar.  This can either be a string or a number
+      or a string.
+    type: ['number', 'string']
+  units:
+    description: |
+      The units associated with the scalar value.
+    type: ['string', 'null']
