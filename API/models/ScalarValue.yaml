@@ -8,9 +8,10 @@ description: |
 	  "ScalarValue" { "value" : 3.14159 }
 
           If the value is expressed with units, the units should be represented
-          in the units field:
+          in the units field as either a string literal or a URI:
 
 	  "ScalarValue" { "value" : 165, "units" : "lbm" }
+	  *** TODO Add an example of a URI here ***
 
           Note:  a ratio such as 10% may be represented two ways:
 

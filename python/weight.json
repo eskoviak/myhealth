@@ -1,0 +1,15 @@
+{
+  "weight" :
+     {
+       "weight" :
+          { 
+            "value" : 155,
+            "units" : "lbm"
+          },
+       "bodyFat" :
+          {
+            "value" : 15.1,
+            "units" : "%"
+          }
+      }
+}

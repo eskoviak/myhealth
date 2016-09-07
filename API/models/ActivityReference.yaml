@@ -1,0 +1,9 @@
+description: |
+  A reference value for a given activity.
+required:
+  []
+properties:
+  uuid:
+    description: |
+      The UUID of this activity 
+    

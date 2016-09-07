@@ -1,0 +1,20 @@
+description: |
+  A compund value is one that has multiple parts, each of which is it
+  self a scalar value.  An example of this is a blood pressure value, which
+  has three parts:  The systolic pressure, the diastolic pressure and the
+  heart rate.  Each is a unitized scalar value, but also is observed together.
+
+  Example, the BP is measured at 120/80 mmHg at 60 bpm.
+required:
+  [ ]
+properties:
+  values:
+    description: |
+      The container for the associated values.
+    type:  array
+    items:
+      name:
+        description:  the name of this part.
+        type: string
+      scalarValue:
+        $ref: ../definitions.yaml#/definitions/ScalarValue

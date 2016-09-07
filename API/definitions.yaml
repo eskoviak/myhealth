@@ -2,3 +2,7 @@ description:  The definitions file for this API
 properties:
   Client:
     $ref: ./models/Client.yaml
+  CompoundValue:
+    $ref: ./models/CompoundValue.yaml
+  ScalarValue:
+    $ref: ./models/ScalarValue.yaml
