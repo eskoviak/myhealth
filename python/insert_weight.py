@@ -12,16 +12,18 @@ db=MySQLdb.connect(
 
 cur=db.cursor()
 
-cur.execute("""SELECT clientId FROM Clients WHERE lastName = %s""", ('Skoviak', ))
+#cur.execute("""SELECT clientId FROM Clients WHERE lastName = %s""", ('Skoviak', ))
+cur.execute(str('SELECT clientId FROM Clients WHERE lastName = \'{0}\';').format('Skoviak'))
 
 clientId = cur.fetchone()[0]
 currTime = '2016-09-08 12:00:00'
 
 fp = open('weight.json', 'r')
 data = json.load(fp)
+fp.close()
 
 cur.execute(str("INSERT INTO Weight VALUES (\'{0}\', \'{1}\', \"{2}\");").format(clientId, currTime, data))
 #print(str("INSERT INTO Weight VALUES (\'{0}\', \'{1}\', \"{2}\");").format(clientId, currTime, data))
 db.commit()
-fp.close()
+#fp.close()
 db.close()
