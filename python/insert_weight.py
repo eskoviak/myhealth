@@ -3,27 +3,24 @@ import sys
 import string
 import json
 import time
+import healthDAO
 
-db=MySQLdb.connect(
-    host='104.196.12.164',
-    user='root',
-    passwd='Y0uKn0w3',
-    db='myHealth')
+# Get data from user
+w = input('Enter weight in lbm: ')
+bf = input('Enter body fat in percent: ')
+obsDate = str(input('Enter date of obs: '))
+dw = {'value': w, 'units' : 'lbm'}
+dbf = {'value': bf, 'units' : '%'}
+dd = {'weight' : dw, 'bodyFat' : dbf } 
+
+db=healthDAO.getConn()
 
 cur=db.cursor()
 
-#cur.execute("""SELECT clientId FROM Clients WHERE lastName = %s""", ('Skoviak', ))
 cur.execute(str('SELECT clientId FROM Clients WHERE lastName = \'{0}\';').format('Skoviak'))
 
 clientId = cur.fetchone()[0]
-currTime = '2016-09-08 12:00:00'
 
-fp = open('weight.json', 'r')
-data = json.load(fp)
-fp.close()
-
-cur.execute(str("INSERT INTO Weight VALUES (\'{0}\', \'{1}\', \"{2}\");").format(clientId, currTime, data))
-#print(str("INSERT INTO Weight VALUES (\'{0}\', \'{1}\', \"{2}\");").format(clientId, currTime, data))
+cur.execute(str("INSERT INTO Observations VALUES (\'{0}\', \'{1}\', 1,  \"{2}\");").format(clientId,obsDate, dd))
 db.commit()
-#fp.close()
 db.close()

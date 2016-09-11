@@ -1,3 +1,7 @@
+###
+# Format string
+#
+# "\{\"weight\":\{\"weight\":{\"value":{0},\"units":{1}
 {
   "weight" :
      {
