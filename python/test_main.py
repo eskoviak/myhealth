@@ -7,7 +7,7 @@ import healthCalc
 
 weight = float(input('Enter Weight (lbm): '))
 time = float(input('Enter time (min): '))
-inActivity = input('Enter search phrase: ')
+inActivity = raw_input('Enter search phrase: ')
 activities = healthCalc.getActivity(inActivity)
 numItems = len(activities)
 if numItems == 0:

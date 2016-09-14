@@ -7,14 +7,6 @@
 
 import json
 
-"""
-w = input('Enter weight (lbm): ')
-bf = input('Enter body fat (%): ')
-
-s = '{"obsData" : {"weight" : {"weight" : w, "units": "lbm"}, "bodyFat" : {"bodyFat" : bf, "units" : "%"}}}'
-ss = json.loads(s)
-"""
-
 fp = open('weight.json', 'r')
 ss = json.load(fp)
 print(ss)

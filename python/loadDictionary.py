@@ -1,14 +1,4 @@
-#!/usr/bin/env python3
-"""
-  Script to read a tab delimited file and create a 
-  JSON file via a Python dictionary
-
-  Harvard File Format:
-  <string describing activity>/t<125#>\t<155#>\t<185>\n
-
-  The string in field one can contain the comma character
-"""
-import json
+import healthDAO
 
 # create empty dictionary
 harvard = {}
@@ -20,7 +10,20 @@ def loadDictionary(infile, dict):
     dict[parts[0]]=(int(parts[1]),int(parts[2]),int(parts[3]))
 
 #### MAIN #####
+con = healthDAO.getConn()
+cur = con.cursor()
+
 loadDictionary('harvard.csv', harvard)
-fp = open('harvard.json', 'w')
-json.dump(harvard, fp)
-fp.close()
+i = 1
+for key in harvard.keys():
+  data = harvard.get(key)
+  slope = (float(data[2]-data[0])/60.0)/30.0
+  y0 = (data[0]/30)-(slope * 125)
+  j = { 'line' : { 'm' : slope, 'y0' : y0 }}
+  cur.execute(str('INSERT INTO ActTypes VALUES( {0}, "{1}", "{2}" )').format(i, key, j))
+  i += 1
+
+con.commit()
+
+cur.close()
+con.close()  
