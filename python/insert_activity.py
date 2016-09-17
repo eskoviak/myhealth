@@ -21,7 +21,8 @@ if len(results) > 0:
   
   cur.execute('SELECT ActData FROM ActTypes WHERE ActId = {0}'.format(code))
   data = cur.fetchone()
-  print(data[0])
+  j = json.loads(data)
+  print(j.m)
   exit(0)
   d = dict(data[0])
   print (d)

@@ -1,0 +1,6 @@
+USE myHealth;
+
+CREATE TABLE ActTypes (
+	actId		CHAR(40) NOT NULL PRIMARY KEY,
+	actDescription	VARCHAR(120) NOT NULL,
+	actData		TINYBLOB NOT NULL )

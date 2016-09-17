@@ -1,4 +1,5 @@
 import healthDAO
+import json
 
 # create empty dictionary
 harvard = {}
@@ -19,8 +20,8 @@ for key in harvard.keys():
   data = harvard.get(key)
   slope = (float(data[2]-data[0])/60.0)/30.0
   y0 = (data[0]/30)-(slope * 125)
-  j = { 'line' : { 'm' : slope, 'y0' : y0 }}
-  cur.execute(str('INSERT INTO ActTypes VALUES( {0}, "{1}", "{2}" )').format(i, key, j))
+#  j = '{"line":{"m":{0},"y0":{1}}}'.format(slope, y0)
+  cur.execute(str('INSERT INTO ActTypes VALUES( {0}, "{1}", "{2}" )').format(i, key, json.dumps({'line':{'m':slope,'y0':y0}})))
   i += 1
 
 con.commit()
