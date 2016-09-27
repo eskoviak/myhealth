@@ -1,8 +1,9 @@
+#!/usr/bin/env python
 import os
 import json
 
 # create path if it doesn't exsit
-path = 'Activities'
+path = 'dbspace/Activities'
 if not os.path.exists(path):
   os.mkdir(path)
 
