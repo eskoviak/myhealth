@@ -18,8 +18,18 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 class MainPage(webapp2.RequestHandler):
 
     def get(self):
+
+        user = users.get_current_user()
+        if user:
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+        else:
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+        
         template_values = {
-            'user': 'Ed Skoviak',
+            'user': user,
+            'url_linktext': url_linktext,
         }
 
         template = JINJA_ENVIRONMENT.get_template('templates/index.html')
