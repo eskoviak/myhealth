@@ -1,6 +1,8 @@
 # [START imports]
 import os
 import urllib
+#TODO FIX THIS
+#from ./python.healthCalc import toKg
 
 from google.appengine.api import users
 from google.appengine.ext import ndb
@@ -57,8 +59,10 @@ class Weight(webapp2.RequestHandler):
         leanBodyMass = weight * ( 1.0 - bodyFat/100)
 
         # Assume for now the weight is in lbm
-        BMR = (leanBodyMass/2.204) * 21.6 + 370
-
+        #TODO Fix this
+        #BMR = toKg(leanBodyMass) * 21.6 + 370
+        BMR = leanBodyMass/2.204 * 21.6 + 370
+        
         query_params = {
             'weight': str(weight),
             'bodyFat': str(bodyFat),

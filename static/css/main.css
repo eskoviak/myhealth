@@ -1,4 +1,25 @@
 @charset "UTF-8";
-h1 {
-	color: #EB072D;
+.h1 {
+	color: #FCED9A;
+}
+.p {
+	color: #F1AD0B;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-style: normal;
+	font-weight: bolder;
+	font-size: large;
+}
+.input {
+	background-color: #A29401;
+	color: #161901;
+}
+body {
+	background-image: url(../images/yellow%20and%20green%20flowers.jpg);
+}
+.h2 {
+	color: #232C00;
+	font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-style: italic;
+	font-size: large;
+	font-weight: bolder;
 }

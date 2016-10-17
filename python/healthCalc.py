@@ -27,3 +27,6 @@ def getActivityData(activityKey):
   harvard = json.load(fp)
   return harvard[activityKey]
 
+def toKg(inweight):
+  return inweight/2.204
+
