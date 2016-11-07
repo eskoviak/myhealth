@@ -6,7 +6,7 @@ description: |
 
   Example, the BP is measured at 120/80 mmHg at 60 bpm.
 required:
-  [ ]
+  values
 properties:
   values:
     description: |

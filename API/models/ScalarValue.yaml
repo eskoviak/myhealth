@@ -21,14 +21,18 @@ description: |
   
           "Ratio" { "value" : 0.10 } for the same thing. 
 required:
-  [value]
+  - value
 properties:
   value:
     description: |
       The value of this scalar.  This can either be a string or a number
       or a string.
-    type: ['number', 'string']
+    type:
+      - number
+      - string
   units:
     description: |
       The units associated with the scalar value.
-    type: ['string', 'null']
+    type:
+      - string
+      - null

@@ -1,18 +1,32 @@
 description: |
-  The HealthFact model -- represents a know health fact
+  The HealthFact model -- represents a known health fact
 required:
-  []
+  - type
+  - observationDate
+  - source
+  - value
 properties:
   type:
     description: |
       The type of HealthFact
-    enum: 
-      [ 'Weight', 'Height', 'BodyFat', 'BloodPressure']
+    enum:
+      - 'Weight'
+      - 'Height'
+      - 'BodyFat'
+      - 'BloodPressue' 
   observationDate:
+    description: |
+      ISO 8601 Forat
     type: string
     format: date
+  source:
+    type:
+      - string
   value:
-    type: number
-  unit:
-    enum:
-      ['lbm', 'kg', 'in','cm','%'] 
+    description: |
+      The value of the HealthFact.
+    type:  
+      - object
+    patternProperties:
+      - $ref: ./definitions.yaml#/definitions.ScalarValue
+      - $ref: ./definitions.yaml#/definitions.CompoundValue
