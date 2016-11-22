@@ -6,21 +6,22 @@
     </head>
     <div>
       <body>
-      <div class="h1">
-          <h1>Welcome to my Health</h1>
-        </div>
-        <div class="p">
-          <h2>Hello {{ user }}</h2>
-        </div>
-        <a href="{{ url|safe }}" class="btn">{{ url_linktext }}</a>
-        <form action="/weight" method="POST">
-          <p class="p">Weight: <input name="weight" class="input" value="{{ weight }}"> (lbm)</p>
-          <p class="p">Body Fat: <input name="bodyFat" class="input" value="{{ bodyFat }}"> (%)</p>
-          <input type="submit" class="input" value="Submit">
-      </form>
-        <p class="h2">Caluculated Values:</p>
-      <p class="p">Lean Body Mass: {{ leanBodyMass }} (lbm)</p>
-        <p class="p">BMR: {{ BMR }} (kCal)</p>  
+		  <div class="h1">
+			<h1>Welcome to my Health</h1>
+		  </div>
+		  <div class="p">
+			<h2>Hello {{ user }}</h2>
+		  </div>
+		  <a href="{{ url|safe }}" class="btn">{{ url_linktext }}</a>
+		  <form action="/weight" method="POST">
+			<p class="p">Weight: <input name="weight" class="input" value="{{ weight }}"> (lbm)</p>
+			<p class="p">Body Fat: <input name="bodyFat" class="input" value="{{ bodyFat }}"> (%)</p>
+			<input type="submit" class="input" value="Submit">
+		  </form>
+		  <p class="h2">Caluculated Values:</p>
+		  <p class="p">Lean Body Mass: {{ leanBodyMass }} (lbm)</p>
+		  <p class="p">BMR: {{ BMR }} (kCal)</p>
+          <p class="p">Entity:  <textarea name="Entity" class="input" value="{{ entity }}"></textarea></p>
       </body>
     </div>
 </html>
