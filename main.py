@@ -1,8 +1,9 @@
 # [START imports]
 import os
 import urllib
-#TODO FIX THIS
-#from ./python.healthCalc import toKg
+import sys
+sys.path.append('./healthFact')
+import measurements
 
 from google.appengine.api import users
 from google.appengine.ext import ndb
@@ -23,6 +24,7 @@ class MainPage(webapp2.RequestHandler):
 
         weight = self.request.get('weight', '')
         bodyFat = self.request.get('bodyFat', '')
+        entity = self.request.get('entity', '')
         leanBodyMass = self.request.get('leanBodyMass', '')
         BMR = self.request.get('BMR', '')
         user = users.get_current_user()
@@ -40,34 +42,36 @@ class MainPage(webapp2.RequestHandler):
             'BMR': BMR,
             'user': user,
             'url_linktext': url_linktext,
+            'entity': entity,
         }
 
         template = JINJA_ENVIRONMENT.get_template('templates/index.html')
         self.response.write(template.render(template_values))
 # [END main_page]
 
-# [START weight]
+# [START Class Weight]
 class Weight(webapp2.RequestHandler):
 
     def post(self):
         # The form calls the post method
         # get the weight and bodyFat from the post
-        weight = float(self.request.get('weight', 0.0))
-        bodyFat = float(self.request.get('bodyFat', 0.0))
+	classWeight = measurements.Weight(float(self.request.get('weight', 0.0)),'lbm')
+        classBodyFat = measurements.BodyFat(float(self.request.get('bodyFat', 0.0)))
+        #weight = float(self.request.get('weight', 0.0))
+        #bodyFat = float(self.request.get('bodyFat', 0.0))
 
         # Assume for now the body fat is #.## % format
-        leanBodyMass = weight * ( 1.0 - bodyFat/100)
+        leanBodyMass = classWeight['value'] * ( 1.0 - classBodyFat['value']/100)
 
         # Assume for now the weight is in lbm
-        #TODO Fix this
-        #BMR = toKg(leanBodyMass) * 21.6 + 370
         BMR = leanBodyMass/2.204 * 21.6 + 370
         
         query_params = {
-            'weight': str(weight),
-            'bodyFat': str(bodyFat),
+            'weight': str(classWeight['value']),
+            'bodyFat': str(classBodyFat['value']),
             'leanBodyMass': str(leanBodyMass),
-            'BMR': str(BMR)
+            'BMR': str(BMR),
+            'entity': str(classWeight.toEntity()),
         }
 
         self.redirect('/?'+urllib.urlencode(query_params))
