@@ -1,32 +1,33 @@
-#import healthDAO
+# -*- coding: utf-8 -*-
+"""
+  Module LoadDictionary
+"""
 import json
 
-# create empty dictionary
-harvard = {}
+def load_dictionary(data_file):
+    """ Function load_dictionary
 
-def loadDictionary(infile, dict):
-  # TODO test for existence of infile
-  for line in open(infile, 'r'):
-    parts = line.split('\t')
-    dict[parts[0]]=(int(parts[1]),int(parts[2]),int(parts[3]))
+    Arg:
+        data-file (file):  the csv file containing the input data in the form:
+        Item,N1,N2,N3
+        Where Item is the textual description of the item
+    Returns:
+        dict:
+    """
 
-#### MAIN #####
-#con = healthDAO.getConn()
-#cur = con.cursor()
+    data_dict = dict()
+    for line in open(data_file, 'r'):
+        parts = line.split('\t')
+        data_dict[parts[0]] = (int(parts[1]), int(parts[2]), int(parts[3]))
+    return data_dict
 
-loadDictionary('harvard.csv', harvard)
-i = 1
-fp = open('activities.json', 'w')
-for key in harvard.keys():
-  data = harvard.get(key)
-  slope = (float(data[2]-data[0])/60.0)/30.0
-  y0 = (data[0]/30)-(slope * 125)
-  fp.write(json.dumps({'line':{'m':slope,'y0':y0}}))
-#  j = '{"line":{"m":{0},"y0":{1}}}'.format(slope, y0)
-#  cur.execute(str('INSERT INTO ActTypes VALUES( {0}, "{1}", "{2}" )').format(i, key, json.dumps({'line':{'m':slope,'y0':y0}})))
-  i += 1
+if __name__ == '__main__':
+    FP = open('activities.json', 'w')
+    for entry in load_dictionary('harvard.csv'):
+        data = harvard.get(key)
+        slope = (float(data[2]-data[0])/60.0)/30.0
+        y0 = (data[0]/30)-(slope * 125)
+        fp.write(json.dumps({'line':{'m':slope,'y0':y0}}))
+        i += 1
 
-#con.commit()
-fp.close()
-#cur.close()
-#con.close()  
+    fp.close()
