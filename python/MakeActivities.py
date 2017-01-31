@@ -27,4 +27,4 @@ if __name__ == '__main__':
             print str(y_intercept) + '} }'
 
     except Exception as identifier:
-        print 'Exception:  ' + identifier.message
+        print 'Exception:  ' + identifier
